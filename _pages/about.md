@@ -26,19 +26,26 @@ I am an MSc student in Artificial Intelligence at the **University of Macau** (2
 MLLM agents reason about the physical world, verify fine-grained visual evidence, and act on it.
 
 Before that, I spent two years as a research intern at **MAIS Lab, Institute of Automation, Chinese Academy of
-Sciences (CASIA)**, advised by [Dr. Ajian Liu](https://liuajian.github.io/) and Prof. Yanyan Liang, where I worked on
+Sciences (CASIA)**, advised by [Dr. Ajian Liu](https://liuajian.github.io/) and
+[Prof. Yanyan Liang](https://scholar.google.com/citations?user=-LEgoWMAAAAJ&hl=zh-CN), where I worked on
 fine-grained MLLM verification (*LocalAgent*, NeurIPS 2026) and flexible-modal face anti-spoofing
 (*FM-MoE*, IEEE T-IFS 2026). I received my BSc in Software Engineering (Artificial Intelligence track) from
 **Macau University of Science and Technology** in 2026.
 
 Current questions I care about:
 
-- Can MLLM-based agents move a single rigid object into a target region from front-view and top-down-view inputs,
-  across both intra-room and cross-room scenes?
-- When is *verification* actually necessary, and how can an agent learn to invoke specialist tools only when the
-  global judgement is unreliable?
-- How do MLLMs transfer to open-world, safety-critical perception such as face anti-spoofing and industrial defect
-  inspection?
+- **Capability over task.** A multimodal model carries a broad open-world prior from pretraining, so applying it to
+  an open-world task is reasonable by construction; what interests me is the capability underneath, not the
+  downstream label. Face anti-spoofing or defect inspection are useful probes, not the goal.
+- **Geometry and scale.** Can the model infer the 3D relations between objects, estimate their scale and position
+  from what it sees, and keep that reasoning consistent as the viewpoint changes?
+- **Human-like visual logic.** Seeing an object should be enough to place it in space, infer how large it is, know
+  where it stands, and — given a goal or a change in the scene — decide what to do next.
+- **Understanding into action.** Can that understanding be turned into a plan and carried out, and can acting feed
+  back into better perception?
+- **What agents change.** Once we organize multi-step behaviour, keep the history as memory, and give the model
+  broad permissions to act, does the knowledge acquired during pretraining get elicited and reused on these derived
+  tasks — or does it stay latent?
 
 I am always happy to discuss research ideas — the [publications](/publications/) page lists my papers, and the
 [projects](/projects/) page links the released ones.
