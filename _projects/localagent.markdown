@@ -7,7 +7,7 @@ img: /assets/img/projects/localagent.svg
 ---
 
 **LocalAgent** verifies whether two images depict the *exact same* physical object under varying viewpoints,
-illumination, and background — a task where semantically similar but different instances differ only in small
+illumination, and background. In this task, semantically similar but different instances differ only in small
 suspicious regions.
 
 <div class="img_row">

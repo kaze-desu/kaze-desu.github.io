@@ -22,7 +22,7 @@ social: true
 
 I am an MSc student in Artificial Intelligence at the **University of Macau** (2026–2028), advised by
 [Prof. Zhedong Zheng](https://zdzheng.xyz/) in the AIGC-DL Lab. My research sits at the intersection of
-**multimodal large language models**, **spatial intelligence**, and **agentic systems** — I am interested in how
+**multimodal large language models**, **spatial intelligence**, and **agentic systems**. I am interested in how
 MLLM agents reason about the physical world, verify fine-grained visual evidence, and act on it.
 
 Before that, I spent two years as a research intern at **MAIS Lab, Institute of Automation, Chinese Academy of
@@ -32,20 +32,11 @@ fine-grained MLLM verification (*LocalAgent*, NeurIPS 2026) and flexible-modal f
 (*FM-MoE*, IEEE T-IFS 2026). I received my BSc in Software Engineering (Artificial Intelligence track) from
 **Macau University of Science and Technology** in 2026.
 
-Current questions I care about:
+Currently, I focus on the underlying visual and spatial capabilities of pretrained multimodal models. In particular,
+I study how a model can infer 3D spatial relations, estimate object scale and position consistently across
+viewpoints, and turn that visual understanding into plans and actions that further improve perception. I also
+explore how agentic designs with sequential execution, interaction memory, and broader permissions to act can elicit
+and reuse pretrained knowledge across new tasks.
 
-- **Capability over task.** A multimodal model carries a broad open-world prior from pretraining, so applying it to
-  an open-world task is reasonable by construction; what interests me is the capability underneath, not the
-  downstream label. Face anti-spoofing or defect inspection are useful probes, not the goal.
-- **Geometry and scale.** Can the model infer the 3D relations between objects, estimate their scale and position
-  from what it sees, and keep that reasoning consistent as the viewpoint changes?
-- **Human-like visual logic.** Seeing an object should be enough to place it in space, infer how large it is, know
-  where it stands, and — given a goal or a change in the scene — decide what to do next.
-- **Understanding into action.** Can that understanding be turned into a plan and carried out, and can acting feed
-  back into better perception?
-- **What agents change.** Once we organize multi-step behaviour, keep the history as memory, and give the model
-  broad permissions to act, does the knowledge acquired during pretraining get elicited and reused on these derived
-  tasks — or does it stay latent?
-
-I am always happy to discuss research ideas — the [publications](/publications/) page lists my papers, and the
-[projects](/projects/) page links the released ones.
+I am always happy to discuss research ideas. You can find my papers on the [publications](/publications/) page and
+released work on the [projects](/projects/) page.

@@ -2,7 +2,7 @@
 layout: page
 title: cv
 permalink: /cv/
-description: Curriculum vitae — <a href="/assets/pdf/CV.pdf" target="_blank">download the PDF</a>.
+description: Curriculum vitae. <a href="/assets/pdf/CV.pdf" target="_blank">Download the PDF</a>.
 nav_order: 2
 ---
 
