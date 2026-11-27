@@ -1,7 +1,7 @@
 _site
 .sass-cache
 .jekyll-metadata
-.DS_store
+.jekyll-cache
+.DS_Store
 .ruby-version
-Gemfile.lock
-
+vendor

@@ -12,11 +12,12 @@
         width: 100%;
 
         img {
-            height: auto;
+            height: 100%;
             position: relative;
-                left: -25%;
-                top: -5%;
-            width: 500px;
+                left: 0;
+                top: 0;
+            object-fit: cover;
+            width: 100%;
         }
 
         a {

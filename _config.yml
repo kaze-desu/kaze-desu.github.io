@@ -1,69 +1,50 @@
 # -----------------------------------------------------------------------------
 # Site settings
 # -----------------------------------------------------------------------------
-name: Your Name
-email: you@example.com
-description: > # this means to ignore newlines until "url:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-footer_text: >
-  Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
+name: Boyun Wang
+email: bywang42@gmail.com
+description: >-
+  Boyun Wang — MSc student in Artificial Intelligence at the University of Macau.
+  Working on multimodal large language models, spatial intelligence, and agentic visual verification.
+footer_text: >-
+  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with the
+  <a href="https://github.com/alexanderhay2020/al-folio-" target="_blank">al-folio*</a> theme.
 
-url:  # the base hostname & protocol for your site
-baseurl: /al-folio # the subpath of your site, e.g. /blog/
-last_updated: # leave blank if you don't want to display last updated
+url: "" # set to https://kaze-desu.github.io only if you deploy from source via Actions
+baseurl: "" # the subpath of your site, e.g. /blog
+last_updated:
 
 # -----------------------------------------------------------------------------
 # Open Graph
 # -----------------------------------------------------------------------------
-# Display links to the page with a preview object on social media.
-# To achieve this, change serve_og_meta to true and then provide the URL of the
-# preview image as the value of og_image.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true
+og_image: /assets/img/projects/localagent.png
+
 # -----------------------------------------------------------------------------
 # Social integration
 # -----------------------------------------------------------------------------
-github_username: # your GitHub user name
+github_username: kaze-desu
 twitter_username: # your Twitter handle
-linkedin_username: # your LinkedIn user name
-scholar_userid: # your Google Scholar ID
-orcid_id: # your ORCID ID
-medium_username: # your Medium username
-quora_username: # your Quora username
-publons_id: # your ID on Publons
-research_gate_profile: # your profile on ResearchGate
-blogger_url: # your blogger URL
+linkedin_username: "%E4%BC%AF%E5%8C%80-%E7%8E%8B-a22735347"
+scholar_userid: InwmqCAAAAAJ
+orcid_id: 0009-0007-7530-0568
+medium_username:
+quora_username:
+publons_id:
+research_gate_profile:
+blogger_url:
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Email is the most reliable way to reach me.
 
-google_analytics: UA-XXXXXXXXX # out your google-analytics code
+google_analytics:
 
 # -----------------------------------------------------------------------------
-# Blog
-# -----------------------------------------------------------------------------
-blog_name: al-folio
-blog_description: a simple whitespace theme for academics
-
-# Pagination
-paginate: 4
-permalink: /blog/:year/:title/
-paginate_path: /blog/page:num/
-
-text:
-  pagination:
-    newer: 'Newer'
-    older: 'Older'
-
-# Comments
-disqus_shortname: al-folio # put your disqus shortname
-
 # Optional features
-show_social_icons:  false
-enable_anchorjs:    false
-enable_katex:       true
+# -----------------------------------------------------------------------------
+show_social_icons: true
+enable_anchorjs: true
+enable_katex: false
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -83,26 +64,20 @@ news_limit: 5
 # -----------------------------------------------------------------------------
 # Jekyll settings
 # -----------------------------------------------------------------------------
-
-# Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
-# Includes & excludes
 include: ['_pages']
-exclude: [vendor]
+exclude: [vendor, README.md, LICENSE, Gemfile, Gemfile.lock, serve.cmd, bin, 'CV (4).pdf']
 
-# Plug-ins
 plugins:
-    - jekyll-email-protect
-    - jekyll-paginate
-    - jekyll/scholar
-    - jemoji
+  - jekyll-email-protect
+  - jekyll-scholar
+  - jemoji
 
 # Jekyll-Scholar
 scholar:
-
-  last_name: Einstein
+  last_name: Wang
 
   style: apa
   locale: en
@@ -116,10 +91,6 @@ scholar:
 
   replace_strings: true
   join_strings: true
-
-  details_dir: bibliography
-  details_layout: bibtex.html
-  details_link: Details
 
   query: "@*"
 

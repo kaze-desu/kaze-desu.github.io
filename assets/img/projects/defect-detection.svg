@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 450" width="500" height="450" role="img" aria-label="Open-World Defect Detection">
+  <rect width="500" height="450" fill="#f4f6f9"/>
+  <rect x="0" y="0" width="500" height="8" fill="#8E44AD"/>
+  <text x="250" y="215" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#1f2933">Open-World Defect Detection</text>
+  <text x="250" y="255" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#5b6770">Industrial inspection with MLLMs</text>
+  <line x1="225" y1="285" x2="275" y2="285" stroke="#8E44AD" stroke-width="3" opacity="0.6"/>
+</svg>

@@ -1,8 +1,10 @@
-Adams:
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+# Co-authors with personal homepages. Matching is on the last name used in
+# _bibliography/papers.bib; names without an entry are rendered as plain text.
+Zheng:
+    url: https://zdzheng.xyz/
 
-Podolsky:
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+Liu:
+    url: https://liuajian.github.io/
 
-Rosen:
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+Wan:
+    url: http://www.cbsr.ia.ac.cn/users/jwan/

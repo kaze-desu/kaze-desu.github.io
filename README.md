@@ -1,134 +1,88 @@
-# al-folio*
+# academic
 
-[![build status](https://travis-ci.org/alshedivat/al-folio*.svg?branch=master)](https://travis-ci.org/alshedivat/al-folio*)
-[![demo](https://img.shields.io/badge/theme-demo-brightgreen.svg)](https://alshedivat.github.io/al-folio*/)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/alshedivat/al-folio*/blob/master/LICENSE)
-[![gitter](https://badges.gitter.im/alshedivat/al-folio*.svg)](https://gitter.im/alshedivat/al-folio*?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+Personal academic site of **Boyun Wang**, built on the
+[al-folio\*](https://github.com/alexanderhay2020/al-folio-) theme (a fork of
+[al-folio](https://github.com/alshedivat/al-folio)), running on Jekyll 4.
 
-A simple and clean [Jekyll](https://jekyllrb.com/) theme for academics.
+Pages: `about` (bio + news + links), `cv`, `projects`, `publications`.
 
-[![Screenshot](assets/img/full-screenshot.png)](https://alshedivat.github.io/al-folio*/)
+## What lives where
 
-Originally, **al-folio** was based on the [\*folio theme](https://github.com/bogoli/-folio) (published by [Lia Bogoev](http://liabogoev.com) and under the MIT license).
-Since then, it got a full re-write of the styles and many additional cool features.
-The emphasis is on whitespace, transparency, and academic usage: [theme demo](https://alshedivat.github.io/al-folio*/).
+| Path | Content |
+| --- | --- |
+| `_config.yml` | Site name, email, social handles, scholar settings, nav order |
+| `_data/coauthors.yml` | Homepages of co-authors, linked from the bibliography |
+| `_data/venues.yml` | Venue links used by the `[NeurIPS]` / `[T-IFS]` badges |
+| `_bibliography/papers.bib` | Publications (BibTeX; fields `abbr`, `arxiv`, `html`, `code`, `doi`, `abstract`) |
+| | `_pages/about.md` | Homepage text + profile card |
+| `_pages/cv.md` | CV page (HTML entries; mirrors `assets/pdf/CV.pdf`) |
+| `_pages/projects.md` | Project grid; entries come from `_projects/` sorted by `order:` |
+| `_news/` | One Markdown file per news item, `inline: true` for the homepage table |
+| `_projects/` | One Markdown file per project; `img:` is the cover, `order:` the position |
+| `assets/img/prof_pic.svg` | Profile picture placeholder — replace with your own photo (PNG/JPG works too) |
+| `assets/pdf/CV.pdf` | CV download |
 
-**al-folio*** is a theme built upon al-folio, making small aesthetic changes, notably the addition of buttons.
+## Local development (this machine)
 
-Changes made:
-<ul>
-  <li>
-  Button feature to the al-folio theme, now al-folio*. Buttons were taken from the [academic-portfolio](https://github.com/ys1998/academic-portfolio) theme. Otherwise the same thing. Check out my [site](https://alexanderhay2020.github.io/) to see the al-folio* theme being used.
-  </li><br>
-  <li>
-  Removed time from the date for posts
-  </li>
-</ul>
+Ruby 3.3.6 portable lives outside the repo at
+`E:\MUST\code\.tools\rubyinstaller-3.3.6-1-x64` (with an MSYS2 UCRT toolchain in
+`msys64\`).
 
-## Getting started
-
-For more about how to use Jekyll, check out [this tutorial](https://www.taniarascia.com/make-a-static-website-with-jekyll/).
-Why Jekyll? Read this [blog post](https://karpathy.github.io/2014/07/01/switching-to-jekyll/)!
-
-### Installation
-
-Assuming you have [Ruby](https://www.ruby-lang.org/en/downloads/) and [Bundler](https://bundler.io/) installed on your system (*hint: for ease of managing ruby gems, consider using [rbenv](https://github.com/rbenv/rbenv)*), first fork the theme from `git@github.com:alexanderhay2020/al-folio-` to `github.com:<your-username>/<your-repo-name>` and do the following:
-
-```bash
-$ git clone git@github.com:<your-username>/<your-repo-name>.git
-$ cd <your-repo-name>
-$ bundle install
-$ bundle exec jekyll serve
+```bat
+serve.cmd
 ```
 
-Now, feel free to customize the theme however you like (don't forget to change the name!).
-After you are done, **commit** your final changes.
-Now, you can deploy your website to [GitHub Pages](https://pages.github.com/) by running the deploy script:
+then open <http://localhost:4000>. Use `localhost`, not `127.0.0.1`: Jekyll sets
+`site.url` to `http://localhost:4000` during `serve`, so absolute asset links
+mismatch the bare IP and fonts fail with a CORS error.
 
-```bash
-$ ./bin/deploy [--user]
-```
-By default, the script uses the `master` branch for the source code and deploys the webpage to `gh-pages`.
-The optional flag `--user` tells it to deploy to `master` and use `source` for the source code instead.
-Using `master` for deployment is a convention for [user and organization pages](https://help.github.com/articles/user-organization-and-project-pages/).
+One-off build:
 
-**Note:** when deploying your user or organization page, make sure the `_config.yml` has `url` and `baseurl` fields as follows.
-
-```
-url: # should be empty
-baseurl:  # should be empty
+```bat
+set RUBY_HOME=E:\MUST\code\.tools\rubyinstaller-3.3.6-1-x64
+set PATH=%RUBY_HOME%\bin\ruby_builtin_dlls;%RUBY_HOME%\bin;%RUBY_HOME%\msys64\usr\bin;%RUBY_HOME%\msys64\ucrt64\bin;%PATH%
+"%RUBY_HOME%\bin\ruby.exe" -e "require 'bundler/setup'; load Gem.bin_path('jekyll','jekyll')" -- build
 ```
 
-### Usage
+`bundle exec` is not used: this Ruby's `bin` shims are not resolvable by
+Bundler on Windows, so the launcher above is equivalent and reliable.
 
-Note that `_pages/about.md` is built to index.html in the published site. There is therefore no need to have a separate index page for the project. If an index page does exist in the root directory then this will prevent `_pages/about.md` from being added to the built site.
+## Deploy to GitHub Pages
 
-## Features
+Live at <https://kaze-desu.github.io>. Branches in
+`kaze-desu/kaze-desu.github.io`:
 
-#### Ergonomic Publications
+- `main` — built site only (Pages source: branch `main`, `/`, legacy build;
+  `.nojekyll` present). One force-pushed commit per deploy, message
+  `Deploy site from source@<sha>`.
+- `source` — this Jekyll source.
 
-Your publications page is generated automatically from your BibTex bibliography.
-Simply edit `_bibliography/papers.bib`.
-You can also add new `*.bib` files and customize the look of your publications however you like by editing `_pages/publications.md`.
+Deploy after editing the source branch:
 
-Keep meta-information about your co-authors in `_data/coauthors.yml` and Jekyll will insert links to their webpages automatically.
+```bat
+REM 1. build
+serve.cmd            REM Ctrl+C after it says "Server address"; _site/ is written
+REM 2. publish the built tree
+rmdir /s /q ..\publish 2>nul
+xcopy /e /i /y _site ..\publish >nul
+type nul > ..\publish\.nojekyll
+cd ..\publish
+git init -b main
+git add -A
+git -c user.name="<you>" -c user.email="<you>@users.noreply.github.com" commit -m "Deploy site"
+git remote add origin https://github.com/kaze-desu/kaze-desu.github.io.git
+git push -f origin main
+```
 
-#### Collections
-This Jekyll theme implements collections to let you break up your work into categories.
-The example is divided into news and projects, but easily revamp this into apps, short stories, courses, or whatever your creative work is.
+Commit and push the source change separately (`git push origin source`).
+Do not use `bin/deploy`: it targets a `gh-pages` branch and deletes untracked files.
 
-> To do this, edit the collections in the `_config.yml` file, create a corresponding folder, and create a landing page for your collection, similar to `_pages/projects.md`.
+## Environment notes
 
-Two different layouts are included: the blog layout, for a list of detailed descriptive list of entries, and the projects layout.
-The projects layout overlays a descriptive hoverover on a background image.
-If no image is provided, the square is auto-filled with the chosen theme color.
-Thumbnail sizing is not necessary, as the grid crops images perfectly.
-
-#### Theming
-Six beautiful theme colors have been selected to choose from.
-The default is purple, but quickly change it by editing `$theme-color` variable in the `_sass/variables.scss` file (line 72).
-Other color variables are listed there, as well.
-
-#### Photos
-Photo formatting is made simple using rows of a 3-column system.
-Make photos 1/3, 2/3, or full width.
-Easily create beautiful grids within your blog posts and projects pages:
-
-<p align="center">
-  <a href="https://alshedivat.github.io/al-folio*/projects/1_project/">
-    <img src="assets/img/photos-screenshot.png" width="75%">
-  </a>
-</p>
-
-#### Code Highlighting
-This theme implements Jekyll's built in code syntax highlighting with Pygments.
-Just use the liquid tags `{% highlight python %}` and `{% endhighlight %}` to delineate your code:
-
-<p align="center">
-  <a href="https://alshedivat.github.io/al-folio*/blog/2015/code/">
-    <img src="assets/img/code-screenshot.png" width="75%">
-  </a>
-</p>
-
-#### Social media previews
-The al-folio* theme optionally supports preview images on social media.
-To enable this functionality you will need to set `serve_og_meta` to `true` in
-your `_config.yml`. Once you have done so, all your site's pages will include
-Open Graph data in the HTML head element.
-
-You will then need to configure what image to display in your site's social
-media previews. This can be configured on a per-page basis, by setting the
-`og_image` page variable. If for an individual page this variable is not set,
-then the theme will fall back to a site-wide `og_image` variable, configurable
-in your `_config.yml`. In both the page-specific and site-wide cases, the
-`og_image` variable needs to hold the URL for the image you wish to display in
-social media previews.
-
-## Contributing
-
-Feel free to contribute new features and theme improvements by sending a pull request.
-Style improvements and bug fixes are especially welcome.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+- **Sass warnings.** The 2020 theme uses `@import`, `darken()` and `/` division.
+  Dart Sass prints deprecation warnings; the build still succeeds.
+- **`date` is pinned to 3.3.4** in the `Gemfile`: precompiled/built `date` gems
+  ≥ 3.4 fail to load against the Ruby 3.3 ABI in this portable install.
+- **`libwinpthread-1.dll`** under `ruby_builtin_dlls` was replaced with the MSYS2
+  UCRT copy, because the bundled one lacks `clock_gettime64`, which extensions
+  compiled with the UCRT toolchain import.

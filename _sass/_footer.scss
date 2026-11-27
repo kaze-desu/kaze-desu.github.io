@@ -25,9 +25,8 @@ footer {
   font-size: $footer-font-size;
   font-weight: $footer-font-weight;
   padding: $footer-padding;
-  position: fixed;
-    left: 0px;
-    bottom: 0px;
+  margin-top: 3rem;
+  position: relative;
   width: 100%;
 
   a { color: #fff; }
