@@ -40,5 +40,5 @@ Current questions I care about:
 - How do MLLMs transfer to open-world, safety-critical perception such as face anti-spoofing and industrial defect
   inspection?
 
-I am always happy to discuss research ideas — the [publications](/publications/) page lists my papers, and most
-projects are open-sourced.
+I am always happy to discuss research ideas — the [publications](/publications/) page lists my papers, and the
+[projects](/projects/) page links the released ones.
