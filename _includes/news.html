@@ -1,22 +1,19 @@
-<div class="news">
-  <h2>news</h2>
-  {% if site.news  %}
-    <table>
-    {% assign news = site.news | reverse %}
-    {% for item in news limit: site.news_limit %}
-      <tr>
-        <td class="date">{{ item.date | date: "%b %-d, %Y" }}</td>
-        <td class="announcement">
-          {% if item.inline %}
-            {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-          {% else %}
-            <a class="news-title" href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
-          {% endif %}
-        </td>
-      </tr>
-    {% endfor %}
-    </table>
-  {% else %}
-    <p>No news so far...</p>
-  {% endif %}
-</div>
+{% if site.news.size > 0 %}
+<ol class="timeline">
+  {% assign news = site.news | reverse %}
+  {% for item in news limit: site.news_limit %}
+  <li class="timeline__item">
+    <time class="timeline__date" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%b %Y" }}</time>
+    <p class="timeline__text">
+      {% if item.inline %}
+        {{ item.content | remove: '<p>' | remove: '</p>' | strip | emojify }}
+      {% else %}
+        <a href="{{ item.url | prepend: site.baseurl }}">{{ item.title }}</a>
+      {% endif %}
+    </p>
+  </li>
+  {% endfor %}
+</ol>
+{% else %}
+<p>No news so far.</p>
+{% endif %}

@@ -1,23 +1,27 @@
 ---
 layout: about
 permalink: /
-title: <strong>Boyun</strong> Wang
-description: >
-  MSc student in Artificial Intelligence, University of Macau.
-  Multimodal LLMs · Spatial intelligence · Agentic visual verification.
-nav_order: 1
+title: about
+nav_title: About
+eyebrow: MSc student · University of Macau
+tagline: >-
+  Building multimodal models and agents that perceive space, check subtle visual evidence,
+  and act in the physical world.
+interests:
+  - Multimodal LLMs
+  - Spatial intelligence
+  - Agentic systems
+  - Visual verification
 
 profile:
   align: right
   image: prof_pic.jpg
   address: >
     <p>AIGC-DL Lab, Faculty of Science and Technology</p>
-    <p>University of Macau</p>
-    <p>Taipa, Macau SAR, China</p>
-    <p><a href="mailto:bywang42@gmail.com">bywang42@gmail.com</a></p>
+    <p>University of Macau, Taipa, Macau SAR</p>
 
 news: true
-social: true
+selected_papers: true
 ---
 
 I am an MSc student in Artificial Intelligence at the **University of Macau** (2026–2028), advised by

@@ -1,23 +1,25 @@
 ---
 layout: default
 ---
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <h5 class="post-description">{{ page.description }}</h5>
+<article>
+  <header class="page-header">
+    {% if page.venue %}<p class="eyebrow">{{ page.venue }}</p>{% endif %}
+    <h1>{{ page.heading | default: page.nav_title | default: page.title }}</h1>
+    {% if page.description %}<p class="page-header__description">{{ page.description }}</p>{% endif %}
+    {% if page.links %}
+    <div class="page-header__actions">
+      {% for link in page.links %}
+        {% assign href = link.url %}
+        {% unless href contains '://' %}{% assign href = href | prepend: site.baseurl %}{% endunless %}
+        <a class="btn {% if forloop.first %}btn--filled{% else %}btn--tonal{% endif %}" href="{{ href }}" target="_blank" rel="noopener">
+          {% include icon.html name=link.icon %}{{ link.label }}
+        </a>
+      {% endfor %}
+    </div>
+    {% endif %}
   </header>
 
-  <article class="post-content {{page.title}} clearfix">
+  <div class="{% if page.wide %}page-body{% else %}prose{% endif %}">
     {{ content }}
-  </article>
-
-  {% if page.news %}
-    {% include news.html %}
-  {% endif %}
-
-  {% if page.social %}
-    {% include social.html %}
-  {% endif %}
-
-</div>
+  </div>
+</article>

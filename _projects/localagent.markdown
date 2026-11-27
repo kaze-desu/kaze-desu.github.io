@@ -2,21 +2,33 @@
 layout: page
 order: 1
 title: LocalAgent
-description: Collaborative agentic verification for fine-grained instance-level consistency · NeurIPS 2026
-img: /assets/img/projects/localagent.svg
+venue: NeurIPS 2026
+description: Collaborative agentic verification for fine-grained instance-level consistency.
+img: /assets/img/projects/localagent-cover.jpg
+img_fit: contain
+links:
+  - label: Paper (arXiv)
+    url: https://arxiv.org/abs/2610.29174
+    icon: article
+  - label: OpenReview
+    url: https://openreview.net/forum?id=nJtBeEwjzg
+    icon: open_in_new
+  - label: Code
+    url: https://github.com/Firefly-zoo/LocalAgent-main
+    icon: code
 ---
 
 **LocalAgent** verifies whether two images depict the *exact same* physical object under varying viewpoints,
 illumination, and background. In this task, semantically similar but different instances differ only in small
 suspicious regions.
 
-<div class="img_row">
-    <img class="col three left" src="{{ site.baseurl }}/assets/img/projects/localagent-framework.png" alt="LocalAgent framework" title="Overview of the LocalAgent framework"/>
-</div>
-<div class="col three caption">
+<figure>
+  <img src="{{ site.baseurl }}/assets/img/projects/localagent-framework.png" alt="Overview of the LocalAgent framework">
+  <figcaption>
     Overview: the MLLM acts as a spatial controller that localizes suspicious regions and delegates them to a
     Local Evidence Verifier (LEV) toolkit for fine-grained appearance and geometric matching.
-</div>
+  </figcaption>
+</figure>
 
 ## What it does
 
@@ -32,5 +44,3 @@ suspicious regions.
 - +4.9% mean accuracy over the strongest CoT-RFT baseline.
 - Verifier invoked on only 12.13% of samples.
 - General multimodal capabilities of the base MLLM preserved.
-
-Links: [paper (arXiv)](https://arxiv.org/abs/2610.29174) · [OpenReview](https://openreview.net/forum?id=nJtBeEwjzg) · [code](https://github.com/Firefly-zoo/LocalAgent-main)

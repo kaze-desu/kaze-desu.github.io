@@ -2,8 +2,13 @@
 layout: page
 order: 2
 title: Flexible Modal MoE
-description: Mixture-of-experts with inter-modal knowledge distillation for face anti-spoofing · IEEE T-IFS 2026
+venue: IEEE T-IFS 2026
+description: Mixture-of-experts with inter-modal knowledge distillation for face anti-spoofing.
 img: /assets/img/projects/fm-moe.svg
+links:
+  - label: DOI
+    url: https://doi.org/10.1109/TIFS.2026.3714100
+    icon: link
 ---
 
 **FM-MoE** learns a single framework that adapts to *any* available deployment modality for face anti-spoofing,
@@ -17,5 +22,3 @@ removing the redundant independent encoders used by prior flexible-modal methods
 - **MI-KDL**: Cross-Modal Loss (CML) aligns information across modalities, and Shared-to-Multi-Modal Loss (S2MML)
   transfers shared knowledge to every modality to avoid over-optimising a single one.
 - Built benchmarks and wrote the manuscript; targets joint modal attacks under flexible testing protocols.
-
-Links: [DOI](https://doi.org/10.1109/TIFS.2026.3714100)

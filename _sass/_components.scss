@@ -1,0 +1,355 @@
+// Layout primitives and reusable Material 3 components.
+
+.container {
+  width: min(100% - 2 * var(--gutter), var(--page-max));
+  margin-inline: auto;
+}
+
+// ---------------------------------------------------------------- Top app bar
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--md-sys-color-surface) 82%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--md-sys-motion-duration-m) var(--md-sys-motion-easing),
+    background-color var(--md-sys-motion-duration-m) var(--md-sys-motion-easing);
+
+  &.is-scrolled {
+    border-bottom-color: var(--md-sys-color-outline-variant);
+    background: color-mix(in srgb, var(--md-sys-color-surface-container) 85%, transparent);
+  }
+}
+
+.top-bar__inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-right: auto;
+  color: var(--md-sys-color-on-surface);
+  font-weight: 650;
+  font-size: var(--md-sys-typescale-title-m);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+
+  img {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: var(--md-sys-shape-full);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-label-l);
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+    color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing);
+
+  &:hover {
+    color: var(--md-sys-color-on-surface);
+    background: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+  }
+  &[aria-current] {
+    color: var(--md-sys-color-on-secondary-container);
+    background: var(--md-sys-color-secondary-container);
+  }
+}
+
+.top-bar__actions { display: flex; align-items: center; gap: 0.25rem; }
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing);
+
+  &:hover { background: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent); }
+  &:active { background: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent); }
+  .icon { width: 1.4rem; height: 1.4rem; }
+}
+
+// Theme toggle shows the icon of the mode it will switch to
+.theme-toggle {
+  .icon-light { display: none; }
+  :root[data-theme-effective="dark"] & {
+    .icon-light { display: inline-block; }
+    .icon-dark { display: none; }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  .icon-close { display: none; }
+  &[aria-expanded="true"] {
+    .icon-menu { display: none; }
+    .icon-close { display: inline-block; }
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .nav-toggle { display: inline-grid; }
+  .nav {
+    position: absolute;
+    inset: var(--header-h) 0 auto 0;
+    padding: 0.5rem var(--gutter) 1rem;
+    background: var(--md-sys-color-surface-container);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: var(--md-sys-elevation-2);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    transition: opacity var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+      transform var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+      visibility 0s linear var(--md-sys-motion-duration-s);
+
+    &.is-open {
+      visibility: visible;
+      opacity: 1;
+      transform: none;
+      transition-delay: 0s;
+    }
+  }
+  .nav__list { flex-direction: column; align-items: stretch; }
+  .nav__link { height: 3rem; font-size: var(--md-sys-typescale-body-l); }
+}
+
+// ---------------------------------------------------------------- Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--md-sys-shape-full);
+  font: inherit;
+  font-size: var(--md-sys-typescale-label-l);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: box-shadow var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+    background-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+    transform var(--md-sys-motion-duration-s) var(--md-sys-motion-easing);
+
+  .icon { width: 1.15rem; height: 1.15rem; }
+  &:active { transform: scale(0.98); }
+}
+
+.btn--filled {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  &:hover {
+    box-shadow: var(--md-sys-elevation-1);
+    background: color-mix(in srgb, var(--md-sys-color-primary) 92%, var(--md-sys-color-on-primary));
+  }
+}
+
+.btn--tonal {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  &:hover {
+    box-shadow: var(--md-sys-elevation-1);
+    background: color-mix(in srgb, var(--md-sys-color-secondary-container) 92%, var(--md-sys-color-on-secondary-container));
+  }
+}
+
+.btn--text {
+  padding: 0 0.75rem;
+  background: transparent;
+  color: var(--md-sys-color-primary);
+  &:hover { background: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent); }
+}
+
+// Brand icon buttons (Font Awesome / Academicons glyphs)
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: inline-grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 1.15rem;
+    text-decoration: none;
+    transition: background-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+      color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing);
+
+    &:hover {
+      color: var(--md-sys-color-primary);
+      background: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+    }
+  }
+}
+
+// ---------------------------------------------------------------- Chips and badges
+.chip-set {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 2rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-s);
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  font: inherit;
+  font-size: var(--md-sys-typescale-label-l);
+  font-weight: 550;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+    border-color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing),
+    color var(--md-sys-motion-duration-s) var(--md-sys-motion-easing);
+
+  .icon { width: 1.05rem; height: 1.05rem; color: var(--md-sys-color-primary); }
+
+  &:hover {
+    color: var(--md-sys-color-on-surface);
+    background: color-mix(in srgb, var(--md-sys-color-on-surface) 6%, transparent);
+  }
+  &[aria-expanded="true"] {
+    border-color: transparent;
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    .icon { color: inherit; transform: rotate(180deg); }
+  }
+}
+
+.chip--static {
+  cursor: default;
+  &:hover { background: transparent; color: var(--md-sys-color-on-surface-variant); }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.6rem;
+  padding: 0 0.65rem;
+  border-radius: var(--md-sys-shape-s);
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+  font-size: var(--md-sys-typescale-label-m);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+// ---------------------------------------------------------------- Cards
+.card {
+  border-radius: var(--md-sys-shape-xl);
+  background: var(--md-sys-color-surface-container-low);
+  border: 1px solid color-mix(in srgb, var(--md-sys-color-outline-variant) 60%, transparent);
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+}
+
+.card--interactive {
+  transition: box-shadow var(--md-sys-motion-duration-m) var(--md-sys-motion-easing),
+    transform var(--md-sys-motion-duration-m) var(--md-sys-motion-easing),
+    background-color var(--md-sys-motion-duration-m) var(--md-sys-motion-easing);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-2);
+    background: var(--md-sys-color-surface-container);
+  }
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+
+  h2 {
+    font-size: var(--md-sys-typescale-headline-m);
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  color: var(--md-sys-color-primary);
+  font-size: var(--md-sys-typescale-label-l);
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+// ---------------------------------------------------------------- Footer
+.site-footer {
+  margin-top: clamp(3rem, 2rem + 4vw, 6rem);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-m);
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.75rem;
+  }
+  p { margin: 0; }
+  a { color: inherit; }
+}

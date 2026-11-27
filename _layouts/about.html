@@ -1,18 +1,60 @@
 ---
-layout: page
+layout: default
 ---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__text">
+    {% if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    <h1 class="hero__title" id="hero-title">{{ site.name }}</h1>
+    {% if page.tagline %}<p class="hero__lead">{{ page.tagline }}</p>{% endif %}
 
-{% if page.profile %}
-  <div class="profile col one {{ page.profile.align }}">
-    {% if page.profile.image %}
-      <img class="one" src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl | prepend: site.url }}">
+    {% if page.interests %}
+    <ul class="chip-set" aria-label="Research interests">
+      {% for interest in page.interests %}<li class="chip chip--static">{{ interest }}</li>{% endfor %}
+    </ul>
     {% endif %}
-    {% if page.profile.address %}
-      <div class="address">
-        {{ page.profile.address }}
-      </div>
-    {% endif %}
+
+    <div class="hero__actions">
+      <a class="btn btn--filled" href="mailto:{{ site.email | encode_email }}">{% include icon.html name="mail" %}Get in touch</a>
+      <a class="btn btn--tonal" href="{{ '/cv/' | prepend: site.baseurl }}">{% include icon.html name="description" %}Curriculum vitae</a>
+      {% include social.html skip_email=true %}
+    </div>
   </div>
-{% endif %}
 
-{{ content }}
+  {% if page.profile %}
+  <figure class="hero__portrait">
+    <img src="{{ page.profile.image | prepend: '/assets/img/' | prepend: site.baseurl }}" alt="Profile picture of {{ site.name }}" width="600" height="599">
+    {% if page.profile.address %}
+    <figcaption class="hero__affiliation">
+      {% include icon.html name="location_on" %}
+      <div>{{ page.profile.address }}</div>
+    </figcaption>
+    {% endif %}
+  </figure>
+  {% endif %}
+</section>
+
+<div class="bento">
+  <section class="card bento__about" aria-labelledby="about-title">
+    <div class="section-title"><h2 id="about-title">About</h2></div>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </section>
+
+  {% if page.news %}
+  <section class="card bento__news" aria-labelledby="news-title">
+    <div class="section-title"><h2 id="news-title">News</h2></div>
+    {% include news.html %}
+  </section>
+  {% endif %}
+
+  {% if page.selected_papers %}
+  <section class="bento__papers" aria-labelledby="papers-title">
+    <div class="section-title">
+      <h2 id="papers-title">Selected publications</h2>
+      <a class="btn btn--text" href="{{ '/publications/' | prepend: site.baseurl }}">All publications{% include icon.html name="arrow_forward" %}</a>
+    </div>
+    {% bibliography -f papers %}
+  </section>
+  {% endif %}
+</div>

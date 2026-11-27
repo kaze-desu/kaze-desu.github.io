@@ -1,11 +1,10 @@
-<footer>
-
-  <div class="wrapper">
-    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.name }}.
-    {{ site.footer_text }}
-    {% if site.last_updated %}
-        Last updated: {{ site.last_updated }}.
-    {% endif %}
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      &copy; {{ site.time | date: '%Y' }} {{ site.name }}.
+      {% if site.last_updated %}Last updated {{ site.last_updated }}.{% endif %}
+      Built with <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>.
+    </p>
+    {% include social.html %}
   </div>
-
 </footer>

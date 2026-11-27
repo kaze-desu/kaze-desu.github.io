@@ -1,0 +1,120 @@
+// Material 3 (Material You) design tokens.
+// Generated with @material/material-color-utilities (SchemeFidelity, single-seed M3)
+// from Shimakaze's blonde hair, amber eyes, and gold uniform accents (#E5B85C, H=82°),
+// aligned with QuantizerCelebi + Score top extraction (#DAA35F / #E5B85C) from the character artwork.
+// SchemeFidelity naturally pairs warm gold/cream (primary & secondary) with sailor-collar blue (tertiary).
+
+@mixin light-scheme {
+  color-scheme: light;
+  --md-sys-color-primary: #7a5900;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #e5b85c;
+  --md-sys-color-on-primary-container: #644800;
+  --md-sys-color-secondary: #6f5c38;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #f9dfb1;
+  --md-sys-color-on-secondary-container: #75623d;
+  --md-sys-color-tertiary: #405e97;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #a1befe;
+  --md-sys-color-on-tertiary-container: #2d4c84;
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-surface: #fff8f2;
+  --md-sys-color-on-surface: #1f1b15;
+  --md-sys-color-on-surface-variant: #4e4637;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #fcf2e7;
+  --md-sys-color-surface-container: #f6ece2;
+  --md-sys-color-surface-container-high: #f0e7dc;
+  --md-sys-color-surface-container-highest: #eae1d6;
+  --md-sys-color-outline: #807665;
+  --md-sys-color-outline-variant: #d2c5b2;
+  --md-sys-color-inverse-surface: #343029;
+  --md-sys-color-inverse-on-surface: #f9efe4;
+  --md-sys-color-inverse-primary: #eec063;
+  --md-sys-color-shadow: 0 0 0;
+  --hero-glow-1: color-mix(in srgb, var(--md-sys-color-primary-container) 34%, transparent);
+  --hero-glow-2: color-mix(in srgb, var(--md-sys-color-tertiary-container) 26%, transparent);
+}
+
+@mixin dark-scheme {
+  color-scheme: dark;
+  --md-sys-color-primary: #ffd582;
+  --md-sys-color-on-primary: #402d00;
+  --md-sys-color-primary-container: #e5b85c;
+  --md-sys-color-on-primary-container: #644800;
+  --md-sys-color-secondary: #dcc397;
+  --md-sys-color-on-secondary: #3d2e0e;
+  --md-sys-color-secondary-container: #554422;
+  --md-sys-color-on-secondary-container: #cab287;
+  --md-sys-color-tertiary: #cbdaff;
+  --md-sys-color-on-tertiary: #072e66;
+  --md-sys-color-tertiary-container: #a1befe;
+  --md-sys-color-on-tertiary-container: #2d4c84;
+  --md-sys-color-error: #ffb4ab;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-surface: #16130d;
+  --md-sys-color-on-surface: #eae1d6;
+  --md-sys-color-on-surface-variant: #d2c5b2;
+  --md-sys-color-surface-container-lowest: #110e08;
+  --md-sys-color-surface-container-low: #1f1b15;
+  --md-sys-color-surface-container: #231f18;
+  --md-sys-color-surface-container-high: #2e2922;
+  --md-sys-color-surface-container-highest: #39342d;
+  --md-sys-color-outline: #9a8f7e;
+  --md-sys-color-outline-variant: #4e4637;
+  --md-sys-color-inverse-surface: #eae1d6;
+  --md-sys-color-inverse-on-surface: #343029;
+  --md-sys-color-inverse-primary: #7a5900;
+  --md-sys-color-shadow: 0 0 0;
+  --hero-glow-1: color-mix(in srgb, var(--md-sys-color-primary) 18%, transparent);
+  --hero-glow-2: color-mix(in srgb, var(--md-sys-color-tertiary) 14%, transparent);
+}
+
+:root {
+  @include light-scheme;
+
+  // Typography (M3 type scale, fluid where it matters)
+  --md-ref-typeface: "Roboto Flex", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --md-ref-typeface-mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+  --md-sys-typescale-display: clamp(2.5rem, 1.6rem + 3.6vw, 3.75rem);
+  --md-sys-typescale-headline-l: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
+  --md-sys-typescale-headline-m: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
+  --md-sys-typescale-title-l: 1.375rem;
+  --md-sys-typescale-title-m: 1.0625rem;
+  --md-sys-typescale-body-l: 1.0625rem;
+  --md-sys-typescale-body-m: 0.9375rem;
+  --md-sys-typescale-label-l: 0.875rem;
+  --md-sys-typescale-label-m: 0.8125rem;
+
+  // Shape
+  --md-sys-shape-xs: 4px;
+  --md-sys-shape-s: 8px;
+  --md-sys-shape-m: 12px;
+  --md-sys-shape-l: 16px;
+  --md-sys-shape-xl: 28px;
+  --md-sys-shape-full: 999px;
+
+  // Elevation
+  --md-sys-elevation-1: 0 1px 2px rgb(var(--md-sys-color-shadow) / 0.12), 0 1px 3px 1px rgb(var(--md-sys-color-shadow) / 0.06);
+  --md-sys-elevation-2: 0 1px 2px rgb(var(--md-sys-color-shadow) / 0.12), 0 2px 6px 2px rgb(var(--md-sys-color-shadow) / 0.08);
+  --md-sys-elevation-3: 0 4px 8px 3px rgb(var(--md-sys-color-shadow) / 0.08), 0 1px 3px rgb(var(--md-sys-color-shadow) / 0.12);
+
+  // Motion
+  --md-sys-motion-easing: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-duration-s: 150ms;
+  --md-sys-motion-duration-m: 300ms;
+
+  // Layout
+  --page-max: 72rem;
+  --prose-max: 46rem;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --header-h: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-scheme; }
+}
+:root[data-theme="dark"] { @include dark-scheme; }

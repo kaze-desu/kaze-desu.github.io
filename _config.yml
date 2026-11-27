@@ -66,6 +66,7 @@ news_limit: 5
 # -----------------------------------------------------------------------------
 markdown: kramdown
 highlighter: rouge
+timezone: Asia/Macau
 
 include: ['_pages']
 exclude: [vendor, README.md, LICENSE, Gemfile, Gemfile.lock, serve.cmd, bin, 'CV (4).pdf']
@@ -78,6 +79,7 @@ plugins:
 # Jekyll-Scholar
 scholar:
   last_name: Wang
+  first_name: Boyun
 
   style: apa
   locale: en
@@ -97,6 +99,4 @@ scholar:
 # -----------------------------------------------------------------------------
 # Other settings
 # -----------------------------------------------------------------------------
-jquery_version: "1.12.4"
 katex_version: "0.9.0"
-anchorjs_version: "3.2.2"

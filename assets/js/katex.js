@@ -1,15 +1,8 @@
-$("script[type='math/tex']").replaceWith(
-  function(){
-    var tex = $(this).text();
-    return "<span class=\"inline-equation\">" +
-           katex.renderToString(tex) +
-           "</span>";
-});
-
-$("script[type='math/tex; mode=display']").replaceWith(
-  function(){
-    var tex = $(this).text();
-    return "<div class=\"equation\">" +
-           katex.renderToString("\\displaystyle "+tex) +
-           "</div>";
+// Render kramdown math blocks with KaTeX (no jQuery).
+document.querySelectorAll('script[type^="math/tex"]').forEach(function (script) {
+  var display = script.type.indexOf('mode=display') !== -1;
+  var el = document.createElement(display ? 'div' : 'span');
+  el.className = display ? 'equation' : 'inline-equation';
+  el.innerHTML = katex.renderToString((display ? '\\displaystyle ' : '') + script.textContent);
+  script.replaceWith(el);
 });
